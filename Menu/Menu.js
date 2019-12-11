@@ -9,20 +9,27 @@ let menuItems = [
   "Log Out"
 ];
 
-const menuHeader = document.querySelector(".header");
-
-createMenu();
+// const menuHeader = document.querySelector(".menu-button");
 
 function createMenu(menuArray) {
   const menuDiv = document.createElement("div");
-  const createUL = document.createElement("ul");
+  menuDiv.classList.add("menu");
+  const createUl = document.createElement("ul");
+  menuDiv.appendChild(createUl);
   for (let i = 0; i < menuArray.length; i++) {
-    let liItem = document.createElement("li");
+    const liItem = document.createElement("li");
+    createUl.appendChild(liItem);
     liItem.textContent = menuArray[i];
   }
-  // console.log(menuDiv);
+
+  const mButton = document.querySelector(".menu-button");
+  mButton.addEventListener("click", e => {
+    menuDiv.classList.toggle("menu--open");
+  });
   return menuDiv;
 }
+const mButton = document.querySelector(".header");
+mButton.appendChild(createMenu(menuItems));
 
 /* 
 
